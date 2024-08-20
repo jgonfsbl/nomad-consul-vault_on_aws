@@ -20,6 +20,14 @@ acl {
   policy_ttl = "60s"
 }
 
+# Nomad TLS Configuration
+tls {
+  http = true 
+  cert_file = "/etc/nomad.d/certs/nomad.crt"
+  key_file = "/etc/nomad.d/certs/nomad.key"
+  verify_https_client = false
+}
+
 consul {
   # The address to the Consul agent.
   address = "127.0.0.1:8500"
