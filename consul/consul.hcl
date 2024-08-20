@@ -15,7 +15,7 @@ server = true
 bootstrap_expect = 3
 
 # LAN network bindings
-bind_addr = "{{ GetInterfaceIP \"ens5\" }}"
+bind_addr = "nnn.nnn.nnn.nnn"
 client_addr = "0.0.0.0"
 
 addresses {
