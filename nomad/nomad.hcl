@@ -4,7 +4,7 @@ datacenter = "dc1"
 
 data_dir = "/opt/nomad/data"
 
-log_level = "DEBUG"
+log_level = "INFO"
 enable_syslog = true
 
 advertise {
