@@ -15,7 +15,7 @@ server = true
 bootstrap_expect = 3
 
 # LAN network bindings
-bind_addr = "nnn.nnn.nnn.nnn"
+bind_addr = "10.0.129.243"
 client_addr = "0.0.0.0"
 
 addresses {
@@ -39,7 +39,6 @@ encrypt = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 # WAN setup
 retry_join = ["provider=aws tag_key=consul_node_type tag_value=server addr_type=private_v4 service=ec2 region=eu-south-2"]
 
-
 # Gossip (optional)
 retry_interval = "30s"
 
@@ -61,8 +60,11 @@ auto_encrypt {
 # Enable ACLs, set default policy and persist tokens
 acl = {
   enabled = true
-  default_policy = "allow"
+  default_policy = "deny"
   enable_token_persistence = true
+#  tokens {
+#    agent = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+#  }
 }
 
 # Logging
