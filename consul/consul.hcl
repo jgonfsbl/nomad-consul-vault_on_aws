@@ -18,11 +18,21 @@ bootstrap_expect = 3
 bind_addr = "{{ GetInterfaceIP \"ens5\" }}"
 client_addr = "0.0.0.0"
 
+addresses {
+  dns = "0.0.0.0"
+  grpc = "0.0.0.0"
+  http = "0.0.0.0"
+  https = "0.0.0.0"
+}
+
+# Consul domain for DNSMasq integration and query
+domain = "consul"
+
 # Interface Web UI
 ui = true
 
 # Encyption detail / Use 'consul keygen' for generation
-encrypt = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+encrypt = "fX65ApA54f+bG57gVlF62qge2maZ7w3z5IfxpeSSYVg="
 
 # WAN setup
 retry_join = ["provider=aws tag_key=consul_node_type tag_value=server"]
@@ -41,6 +51,7 @@ tls {
     key_file  = "/etc/consul.d/certs/dc1-server-consul-1-key.pem"
   }
 }
+
 auto_encrypt {
   allow_tls = true
 }
