@@ -14,6 +14,7 @@ advertise {
 }
 
 acl {
+  # This forces login to Nomad UI
   enabled = false
   token_ttl = "30s"
   policy_ttl = "60s"
