@@ -8,7 +8,7 @@ datacenter = "dc1"
 data_dir = "/opt/consul"
 
 # Log level
-log_level = "DEBUG"
+log_level = "INFO"
 
 # Server mode - Minimum 3 servers for quorum
 server = true
