@@ -34,10 +34,11 @@ ui_config {
 }
 
 # Encyption detail / Use 'consul keygen' for generation
-encrypt = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+encrypt = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
 # WAN setup
 retry_join = ["provider=aws tag_key=consul_node_type tag_value=server addr_type=private_v4 service=ec2 region=eu-south-2"]
+
 
 # Gossip (optional)
 retry_interval = "30s"
@@ -62,9 +63,10 @@ acl = {
   enabled = true
   default_policy = "deny"
   enable_token_persistence = true
-#  tokens {
-#    agent = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-#  }
+  # This is a shared token for Consul and Nomad. See Consul UI for more details.
+  tokens {
+    agent = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+  }
 }
 
 # Logging
