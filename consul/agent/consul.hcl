@@ -15,10 +15,13 @@ server = false
 
 # LAN network bindings
 bind_addr = "10.0.182.148"
-client_addr = "0.0.0.0"
+# client_addr = "10.0.182.148"
+# client_addr = "0.0.0.0"
 
 # Optional: Enable the UI on this node (helpful for debugging)
-ui = false  # Set to true for a local UI
+ui_config {
+  enabled = false # Set to true for a local UI
+}
 
 # Enable local service registration and health checks
 enable_local_script_checks = true
@@ -37,18 +40,21 @@ tls {
   defaults {
     verify_incoming = true
     verify_outgoing = true
+    verify_server_hostname = true
     ca_file   = "/etc/consul.d/certs/consul-agent-ca.pem"
-    cert_file = "/etc/consul.d/certs/dc1-client-consul-1.pem"
-    key_file  = "/etc/consul.d/certs/dc1-client-consul-1-key.pem"
   }
+}
+
+auto_encrypt {
+  tls = true
 }
 
 # Enable ACLs, set default policy and persist tokens
 acl = {
   enabled = true
-  # This is a shared token for Consul and Nomad. See Consul UI for more details.
   tokens {
-    agent = "nnnnnnnn-nnnn-nnnn-nnnn-nnnnnnnnnnnn"
+  # Policy: nomad-client / Token: Nomad Client Token
+    agent = "a8cd99ec-nnnn-nnnn-nnnn-nnnnnnnnnnnn"
   }
 }
 
