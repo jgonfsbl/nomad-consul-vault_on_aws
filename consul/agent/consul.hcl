@@ -15,8 +15,8 @@ server = false
 
 # LAN network bindings
 bind_addr = "10.0.182.148"
-# client_addr = "10.0.182.148"
-# client_addr = "0.0.0.0"
+advertise_addr = "10.0.182.148"
+client_addr = "0.0.0.0"
 
 # Optional: Enable the UI on this node (helpful for debugging)
 ui_config {
@@ -30,7 +30,7 @@ enable_local_script_checks = true
 domain = "consul"
 
 # Encyption detail / Use 'consul keygen' for generation
-encrypt = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+encrypt = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" 
 
 # WAN setup
 retry_join = ["provider=aws tag_key=consul_node_type tag_value=server addr_type=private_v4 service=ec2 region=eu-south-2"]
@@ -42,6 +42,12 @@ tls {
     verify_outgoing = true
     verify_server_hostname = true
     ca_file   = "/etc/consul.d/certs/consul-agent-ca.pem"
+  }
+  grpc {
+    verify_incoming = false
+  }
+  https {
+    verify_incoming = false
   }
 }
 
@@ -61,3 +67,5 @@ acl = {
 # Logging
 enable_syslog = true
 syslog_facility = "local0"
+
+# EOF
