@@ -10,5 +10,21 @@
 ###### VPC Route Tables
 ![image](https://github.com/user-attachments/assets/d621eff6-eda3-4ee5-a21d-55ae16aa472f)
 
+###### VPC Internet Gateway (IGW)
+![image](https://github.com/user-attachments/assets/0e3c1ac7-950a-4164-8162-d2678e66bcfd)
+
+###### VPC NAT Gateway (NATGW)
+![image](https://github.com/user-attachments/assets/32c717c0-4bb1-4fbe-bbe4-7a4b07b21abe)
+
+###### VPC Security Groups
+![image](https://github.com/user-attachments/assets/d6baef41-bbb5-4f53-8d3f-51e08e5c533b)
+![image](https://github.com/user-attachments/assets/b2f70f4f-33e4-4a51-a6a6-3de19584cd07)
+![image](https://github.com/user-attachments/assets/5874545a-e071-41ea-a6b5-db7cfdfb3d89)
+![image](https://github.com/user-attachments/assets/f1a5cfef-7c1f-424f-9cb6-ec21123782bd)
+
+
+
+
+
 
 
