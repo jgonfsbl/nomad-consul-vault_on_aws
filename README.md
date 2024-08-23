@@ -19,7 +19,7 @@ Create a new VPC using the administrator console or IaC that satisfies the follo
 
 
 <details>
-<summary>1. EFS</summary>
+<summary>2. EFS</summary>
   
 ### EFS configuration
 Create a new EFS shared disk to be accesible vía NFS4 following the setup:
