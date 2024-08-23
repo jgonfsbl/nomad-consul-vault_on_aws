@@ -22,7 +22,6 @@ Create a new VPC using the administrator console or IaC that satisfies the follo
 <summary>2. EFS</summary>
   
 ### EFS configuration
-Create a new EFS shared disk to be accesible vía NFS4 following the setup:
-See implementation details in folder [EFS](efs/readme.md)
+Create a new EFS shared disk to be accesible vía NFS4 following the setup described in the implementation detail document, in folder [EFS](efs/readme.md).
 
 </details>
