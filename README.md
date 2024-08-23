@@ -15,15 +15,9 @@ In essence the solution creates a datacenter out of AWS IaaS resources (VPC, EC2
 <summary>1. VPC</summary>
 
 ### VPC configuration
-Create a new VPC using the administrator console or IaC that satisfies the following setup:
+When a Landing Zone with Control Tower is implemented a default VPC has been already populated. Nonetheless, if we want to automate in full the creation and destruction of all resoruces related to Nomad, Consul and Vault it's prefereable to create a fresh new VPC. 
 
-#### Preview of the network setup
-![image](https://github.com/user-attachments/assets/7ae960a0-2c71-4145-9913-5e48b7abb7e9)
-
-#### Wizzard
-![image](https://github.com/user-attachments/assets/d34fea36-4810-4b96-90f3-06b69a455427)
-![image](https://github.com/user-attachments/assets/c3e42b46-0fc6-45cc-8ca1-c618a6600b84)
-
+To create a new VPC using the AWS Management Console (or IaC), this new VPC that should satisfy the setup described in folder [VPC](vpc/readme.md).
 </details>
 
 
@@ -34,6 +28,16 @@ Create a new VPC using the administrator console or IaC that satisfies the follo
 ### EFS configuration
 EFS service is a managed solution for a shared NFS resource disk that can grow up to petabytes. In this scenario is going to be used as a mechanism to exchange files, templates, drivers and other resources between the server instances of Nomad/Consul/Vault and the worker/agent instances. 
 
-To create a new EFS shared disk to be accesible vía NFS4 following the setup is described in the implementation detail document, in folder [EFS](efs/readme.md).
+To create a new EFS shared disk to be accesible vía NFS4 following, the setup is described in the implementation detail document in folder [EFS](efs/readme.md).
+</details>
 
+
+
+<details>
+<summary>3. EC2</summary>
+  
+### EC2 setup
+ECS service is a IaaS solution for virtualmachines that can scale based upon user confiuration rules. The instances can be of many types, from general purpose to those for an specific purpose, like those oriented to memory, compute or inference. In the scenario herein describe tme selection is general purpose using ARM architecture. The reationale is compute capacity by price point.  
+
+To create a new EC2 instance, the setup is described in the implementation detail document in folder [EC2](ec2/readme.md).
 </details>
