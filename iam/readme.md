@@ -1,5 +1,6 @@
 # Permissions
-![image](https://github.com/user-attachments/assets/8041e12a-d312-4193-bd8d-c279d873b68a)
+![image](https://github.com/user-attachments/assets/17f569f4-c0f0-4f59-93df-59e2c4f3c156)
+
 
 Text version of the same policies above:
 
