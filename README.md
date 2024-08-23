@@ -32,6 +32,8 @@ Create a new VPC using the administrator console or IaC that satisfies the follo
 <summary>2. EFS</summary>
   
 ### EFS configuration
-Create a new EFS shared disk to be accesible vía NFS4 following the setup described in the implementation detail document, in folder [EFS](efs/readme.md).
+EFS service is a managed solution for a shared NFS resource disk that can grow up to petabytes. In this scenario is going to be used as a mechanism to exchange files, templates, drivers and other resources between the server instances of Nomad/Consul/Vault and the worker/agent instances. 
+
+To create a new EFS shared disk to be accesible vía NFS4 following the setup is described in the implementation detail document, in folder [EFS](efs/readme.md).
 
 </details>
