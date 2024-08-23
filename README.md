@@ -15,3 +15,14 @@ Create a new VPC using the administrator console or IaC that satisfies the follo
 ![image](https://github.com/user-attachments/assets/c3e42b46-0fc6-45cc-8ca1-c618a6600b84)
 
 </details>
+
+
+
+<details>
+<summary>1. EFS</summary>
+  
+### EFS configuration
+Create a new EFS shared disk to be accesible vía NFS4 following the setup:
+See implementation details in folder [EFS](efs/readme.md)
+
+</details>
