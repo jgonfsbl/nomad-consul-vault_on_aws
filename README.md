@@ -26,7 +26,18 @@ To create a new VPC using the AWS Management Console (or IaC), this new VPC that
 
 
 <details>
-<summary>2. EFS</summary>
+<summary>2. IAM</summary>
+  
+### IAM configuration
+IAM service is a managed solution for everything related to security and identity. The configuration herein described affects to the necessary configuraion (role and policy) for the use of an EC2 Instance Profile, an IAM role that is assigned to an EC2 Instance so it can get access to other AWS services. 
+
+To create the necessary IAM configuration (role, policy), the setup is described in the implementation detail document in folder [IAM](iam/readme.md).
+</details>
+
+
+
+<details>
+<summary>3. EFS</summary>
   
 ### EFS configuration
 EFS service is a managed solution for a shared NFS resource disk that can grow up to petabytes. In this scenario is going to be used as a mechanism to exchange files, templates, drivers and other resources between the server instances of Nomad/Consul/Vault and the worker/agent instances. 
@@ -37,7 +48,7 @@ To create a new EFS shared disk to be accesible vía NFS4 following, the setup i
 
 
 <details>
-<summary>3. EC2</summary>
+<summary>4. EC2</summary>
   
 ### EC2 setup
 ECS service is a IaaS solution for virtualmachines that can scale based upon user confiuration rules. The instances can be of many types, from general purpose to those for an specific purpose, like those oriented to memory, compute or inference. In the scenario herein describe tme selection is general purpose using ARM architecture. The reationale is compute capacity by price point.  
