@@ -40,4 +40,8 @@ To create a new EFS shared disk to be accesible vía NFS4 following, the setup i
 ECS service is a IaaS solution for virtualmachines that can scale based upon user confiuration rules. The instances can be of many types, from general purpose to those for an specific purpose, like those oriented to memory, compute or inference. In the scenario herein describe tme selection is general purpose using ARM architecture. The reationale is compute capacity by price point.  
 
 To create a new EC2 instance, the setup is described in the implementation detail document in folder [EC2](ec2/readme.md).
+
+> [!WARNING]  
+> The ideal scenario with/without IaC is to use a Launch Template to avoid misconfigurations. 
+
 </details>
