@@ -1,6 +1,16 @@
 # Nomad, Consul & Vault on AWS
 Configuration files and documented procedure for the deployment of a Nomad, Consul and Vault datacenter in AWS. 
 
+### Brief description of the process
+To build a Nomad datacenter in AWS we want to leverage the benefits of Consul, as service registry and service discovery for our load balancers and for intention configuration (let's call it basic microsegmentation between workloads) and the benefits of Vault for secrets management and key management. 
+
+Nomad, Consul and Vault are distribuited as a single binary file that needs to be downloaded from Hashicorp servers. To simplify this operation, Hashicorp have apt repositories (for debian, ubuntu) and yum repositories (for redhat, fedora, amazon linux) available. In the scenario described here the operating systems will be Ubuntu 24.04 LTS in ARM (Graviton) processors and the instance typs will be of series T4g, general purpose ARM. 
+
+In essence the solution creates a datacenter out of AWS IaaS resources (VPC, EC2, CloudFront, ALB), PaaS resources (EFS) and some additional managed services (IAM, Config, Control Tower, IAM Identity Center, CloudTrail, Organizations) that compose the AWS Landing Zone reference architecture. 
+
+
+### Implementation guide
+
 <details>
 <summary>1. VPC</summary>
 
