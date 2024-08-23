@@ -44,7 +44,5 @@ ECS service is a IaaS solution for virtualmachines that can scale based upon use
 
 To create a new EC2 instance, the setup is described in the implementation detail document in folder [EC2](ec2/readme.md).
 
-> [!WARNING]  
-> The ideal scenario with/without IaC is to use a Launch Template to avoid misconfigurations. 
-
+Please note that the ideal scenario, with/without IaC, is to use a Launch Template to avoid misconfigurations and improve personalization.
 </details>
