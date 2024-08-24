@@ -57,3 +57,7 @@ To create a new EC2 instance, the setup is described in the implementation detai
 
 Please note that the ideal scenario, with/without IaC, is to use a Launch Template to avoid misconfigurations and improve personalization.
 </details>
+
+After the EC2 Launch the user-data script will complete the job for consul agents, nomad workers, nomad servers and consul server other than the first. The first consul server suffer a chicken-egg problem and the best approach is to initialize it manually. 
+
+# EOF
