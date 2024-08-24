@@ -4,7 +4,7 @@
 ###### Launch a new instance
 ![image](https://github.com/user-attachments/assets/c566265b-fb55-4b61-8940-4018834af097)
 ![image](https://github.com/user-attachments/assets/d9681604-d595-49b7-b18d-128269b71672)
-![image](https://github.com/user-attachments/assets/681ee948-419c-4d1f-a5e4-f577470df87e)
+![image](https://github.com/user-attachments/assets/1fce0d7b-eaa4-4906-a9a4-4426cca83e0c)
 ![image](https://github.com/user-attachments/assets/994effce-e0b8-43ba-afc8-1b6ed596d0a6)
 ![image](https://github.com/user-attachments/assets/90b37164-273d-4651-b9be-7ee2a5e57885)
 
