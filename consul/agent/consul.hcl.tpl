@@ -60,7 +60,7 @@ acl = {
   enabled = true
   tokens {
   # Policy: nomad-client / Token: Nomad Client Token
-    agent = "TPL_CONSUL_TOKEN_CONSULNOMAD_AGENTWORKER"
+    agent = "TPL_CONSUL_TOKEN_CONSULNOMAD-AGENTWORKER"
   }
 }
 
