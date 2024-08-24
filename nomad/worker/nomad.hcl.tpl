@@ -18,7 +18,7 @@ advertise {
 # Consul integration for service discovery and health checks
 consul {
   address = "127.0.0.1:8500"
-  token = "TPL_CONSUL"
+  token = "TPL_CONSUL_TOKEN_AGENT"
   server_service_name = "nomad-servers"
   client_service_name = "nomad-clients"
   auto_advertise = true
