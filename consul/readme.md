@@ -1,6 +1,6 @@
 # Consul configuration
 
-#### Policies
+### Policies
 ![image](https://github.com/user-attachments/assets/98fff031-9af5-4d11-9044-372539644136)
 
 ###### Built-in Policy
@@ -20,7 +20,7 @@
 
 
 
-#### Tokens
+### Tokens
 ![image](https://github.com/user-attachments/assets/12a9597e-d3ae-4d21-9413-8489f9168ac1)
 
 ###### global-mnanagement (the bootstrap token)
@@ -40,7 +40,7 @@
 
 
 
-#### Roles
+### Roles
 ![image](https://github.com/user-attachments/assets/9c839bf4-0ba0-4753-86e1-49d5ebcc2482)
 
 ###### MCV_Admin_Role
@@ -48,7 +48,7 @@
 
 
 
-#### Intentions
+### Intentions
 ![image](https://github.com/user-attachments/assets/b981e90a-c196-4d80-815d-7e39ad5d86d3)
 
 
