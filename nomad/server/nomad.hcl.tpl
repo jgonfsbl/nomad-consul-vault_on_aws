@@ -31,7 +31,7 @@ tls {
 consul {
   # The local Consul agent.
   address = "127.0.0.1:8500"
-  token = "TPL_CONSUL"
+  token = "TPL_CONSUL_TOKEN_SERVER"
   server_auto_join = true
   server_service_name = "nomad-servers"
   auto_advertise = true
