@@ -65,7 +65,7 @@ acl = {
   enable_token_persistence = true
   # This is a shared token for Consul and Nomad. See Consul UI for more details.
   tokens {
-    agent = "TPL_CONSUL_TOKEN_CONSULNOMAD_SERVER"
+    agent = "TPL_CONSUL_TOKEN_CONSULNOMAD-SERVER"
   }
 }
 
