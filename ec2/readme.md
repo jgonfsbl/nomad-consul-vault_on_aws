@@ -6,7 +6,8 @@
 ![image](https://github.com/user-attachments/assets/d9681604-d595-49b7-b18d-128269b71672)
 ![image](https://github.com/user-attachments/assets/681ee948-419c-4d1f-a5e4-f577470df87e)
 ![image](https://github.com/user-attachments/assets/994effce-e0b8-43ba-afc8-1b6ed596d0a6)
-![image](https://github.com/user-attachments/assets/5259246d-cd08-490c-bd93-714e9b16c97d)
+![image](https://github.com/user-attachments/assets/90b37164-273d-4651-b9be-7ee2a5e57885)
+
 
 > [!WARNING]
 > In the picture below the drop-down list named "Capacity reservation" show nothing but in a production environment is advisable to reserve capacity or oterwise the expenditure in on-demand instances will become the solution more pricey than expected. Doing capacity reservation the cost of implementation can be cut down to even a half in some scenarios. Everything depends on if the reservation is completely paid in advance, partially paid or it's only reservation with no upfront payment. Please review the FinOps aspect of the solution. 
