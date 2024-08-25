@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Debug mode
+set -x
+
 #
 # This script decides which implementation of Nomad, Consul and Vault is
 # required based upon instance tags and which network segment the instance is
@@ -41,18 +44,17 @@ EFS_MOUNT_POINT="/opt/efs"
 SERVER_SUBNETS_DEFAULT=("subnet-1" "subnet-2" "subnet-3")
 SERVER_SUBNETS=${SERVER_SUBNETS:-${SERVER_SUBNETS_DEFAULT[@]}}
 
-
-# Get tags
-INSTANCE_NAME=$(aws ec2 describe-tags --region "$REGION" --filters "Name=resource-id,Values=$INSTANCE_ID" "Name=key,Values=Name" --query "Tags[0].Value" --output text)
-NOMAD_NODE_TYPE=$(aws ec2 describe-tags --region "$REGION" --filters "Name=resource-id,Values=$INSTANCE_ID" "Name=key,Values=nomad_node_type" --query "Tags[0].Value" --output text)
-CONSUL_NODE_TYPE=$(aws ec2 describe-tags --region "$REGION" --filters "Name=resource-id,Values=$INSTANCE_ID" "Name=key,Values=consul_node_type" --query "Tags[0].Value" --output text)
-
 # Fetch instance metadata using IMDSv2
 TOKEN=$(curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600")
 INSTANCE_ID=$(curl -H "X-aws-ec2-metadata-token: $TOKEN" -s http://169.254.169.254/latest/meta-data/instance-id)
 REGION=$(curl -H "X-aws-ec2-metadata-token: $TOKEN" -s http://169.254.169.254/latest/dynamic/instance-identity/document | jq -r .region)
 SUBNET_ID=$(curl -H "X-aws-ec2-metadata-token: $TOKEN" -s http://169.254.169.254/latest/meta-data/network/interfaces/macs/$(curl -H "X-aws-ec2-metadata-token: $TOKEN" -s http://169.254.169.254/latest/meta-data/network/interfaces/macs/ | head -n 1)/subnet-id)
 PRIVATE_IP=$(curl -H "X-aws-ec2-metadata-token: $TOKEN" -s http://169.254.169.254/latest/meta-data/local-ipv4)
+
+# Get tags
+INSTANCE_NAME=$(aws ec2 describe-tags --region "$REGION" --filters "Name=resource-id,Values=$INSTANCE_ID" "Name=key,Values=Name" --query "Tags[0].Value" --output text)
+NOMAD_NODE_TYPE=$(aws ec2 describe-tags --region "$REGION" --filters "Name=resource-id,Values=$INSTANCE_ID" "Name=key,Values=nomad_node_type" --query "Tags[0].Value" --output text)
+CONSUL_NODE_TYPE=$(aws ec2 describe-tags --region "$REGION" --filters "Name=resource-id,Values=$INSTANCE_ID" "Name=key,Values=consul_node_type" --query "Tags[0].Value" --output text)
 
 # Chicken-Egg problem for servers: variables cannot be populated because
 # they are not yet built.
@@ -76,7 +78,7 @@ TPL_CONSUL_TOKEN_CONSULNOMAD_SERVER=${TPL_CONSUL_TOKEN_CONSULNOMAD_SERVER:-$TPL_
 # Determine if it's a server based on the subnet and tags
 IS_SERVER="false"
 for subnet in "${SERVER_SUBNETS[@]}"; do
-  if [[ "$SUBNET_ID" == "$subnet" && "$NOMAD_NODE_TYPE" == "server" && "$CONSUL_NODE_TYPE" == "server" ]]; then
+  if [[ "$NOMAD_NODE_TYPE" == "server" && "$CONSUL_NODE_TYPE" == "server" ]]; then
     IS_SERVER="true"
     break
   fi
@@ -107,7 +109,7 @@ if [[ "$IS_SERVER" == "true" ]]; then
   # Replace placeholders in the template files
   sed -i "s/TPL_NAME/$TPL_NAME/g" "/etc/consul.d/consul.hcl"
   sed -i "s/TPL_IP/$TPL_IP/g" "/etc/consul.d/consul.hcl"
-  sed -i "s/TPL_KEYGEN/$TPL_KEYGEN/g" "/etc/consul.d/consul.hcl"
+  sed -i "s|TPL_KEYGEN|$TPL_KEYGEN|g" "/etc/consul.d/consul.hcl"
   sed -i "s/TPL_CONSUL_TOKEN_CONSULNOMAD-SERVER/$TPL_CONSUL_TOKEN_CONSULNOMAD_SERVER/g" "/etc/consul.d/consul.hcl"
 
   # Duplicate the process for Nomad template
@@ -124,7 +126,7 @@ else
   # Replace placeholders in the template files
   sed -i "s/TPL_NAME/$TPL_NAME/g" "/etc/consul.d/consul.hcl"
   sed -i "s/TPL_IP/$TPL_IP/g" "/etc/consul.d/consul.hcl"
-  sed -i "s/TPL_KEYGEN/$TPL_KEYGEN/g" "/etc/consul.d/consul.hcl"
+  sed -i "s|TPL_KEYGEN|$TPL_KEYGEN|g" "/etc/consul.d/consul.hcl"
   sed -i "s/TPL_CONSUL_TOKEN_CONSULNOMAD-AGENTWORKER/$TPL_CONSUL_TOKEN_CONSULNOMAD_AGENTWORKER/g" "/etc/consul.d/consul.hcl"
 
   # Duplicate the process for Nomad template
@@ -136,12 +138,11 @@ fi
 
 
 # Register services
-systemctl enable consul.service
-systemctl enable nomad.service
+# systemctl enable consul.service
+# systemctl enable nomad.service
 
 echo ""
 echo "SERVICES READY TO LAUNCH FOR THE FIRST TIME; POTENTIAL INITIALIZATION BY HAND."
 echo ""
 
 # EOF
-
