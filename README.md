@@ -2,7 +2,7 @@
 Configuration files and documented procedure for the deployment of a Nomad, Consul and Vault datacenter in AWS. 
 
 > [!IMPORTANT]  
-> Work in Progress - Last update on Aug 23rd, 2024
+> Work in Progress - Last update on Aug 26th, 2024
 
 ### Brief description of the process
 To build a Nomad datacenter in AWS we want to leverage the benefits of Consul, as service registry and service discovery for our load balancers and for intention configuration (let's call it basic microsegmentation between workloads) and the benefits of Vault for secrets management and key management. 
