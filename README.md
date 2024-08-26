@@ -91,7 +91,8 @@ By the initialization of the first EC2 instance, that will operate as server, th
        Repeat this command 3/5/7 times to generate 1 pair of certs per server instance. 
   4. Enable and start services:  
        `systemctl enable consul`  
-       `systemctl start consul`  
+       `systemctl start consul`
+  5. Finally, continue with configuration bits describecd in folder [Consul](consul/readme.md).
 </details>
 
 
@@ -107,7 +108,8 @@ Here are the steps to follow:
   2. Copy certificates from EFS share to the right folder in `/etc/nomad.d`
   3. Enable and start services:  
        `systemctl enable nomad`  
-       `systemctl start nomad`  
+       `systemctl start nomad`
+  4. Finally, continue with configuration bits describecd in folder [Nomad](nomad/readme.md).
 </details>
 
 
