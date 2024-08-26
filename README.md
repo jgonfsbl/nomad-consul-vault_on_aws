@@ -63,14 +63,27 @@ After the EC2 Launch the user-data script will complete the job for consul agent
 
 
 <details>
-<summary>5. Consul</summary>
+<summary>5. DNSMasq</summary>
+
+### DNSMasq setup process
+Here are the steps to follow:  
+  
+  1. Copy certificates from EFS share to the right folder in `/etc/dnsmasq.conf`
+  2. Enable and start services:  
+       `systemctl enable dnsmasq`  
+       `systemctl start dnsmasq`  
+</details>
+
+
+
+<details>
+<summary>6. Consul</summary>
 
 ### Consul setup process
 By the initialization of the first EC2 instance, that will operate as server, the first step is to configure the server. For this purpose there's a script called `nodeconfig.sh` that will populate a set of templates included herein with real values read from the IMDSv2 and a local .env file to personaliza all posible things in the server. When the configuration files are ready to run services, we'll start running command, taking note of values and fixing the configuration files minimally again. That's all. Here are the steps to follow:  
   
   1. Fix permission on folders:  
      `chmod consul:consul /etc/consul.d`  
-     `chmod nomad:nomad /etc/nomad.d`  
   2. Initialize Consul's internal CA:  
        `consul tls ca create`
   3. Genearte certificates for all server instances using the internal CA (there are alternative methods using Vault described in the article titled [Generate mTLS Certificates for Consul with Vault](https://developer.hashicorp.com/consul/tutorials/operate-consul/vault-pki-consul-secure-tls):  
@@ -79,9 +92,26 @@ By the initialization of the first EC2 instance, that will operate as server, th
   4. Enable and start services:  
        `systemctl enable consul`  
        `systemctl start consul`  
-
-   
-
 </details>
+
+
+
+<details>
+<summary>7. Nomad</summary>
+
+### Nomad setup process
+Here are the steps to follow:  
+  
+  1. Fix permission on folders:  
+     `chmod nomad:nomad /etc/nomad.d`  
+  2. Copy certificates from EFS share to the right folder in `/etc/nomad.d`
+  3. Enable and start services:  
+       `systemctl enable nomad`  
+       `systemctl start nomad`  
+</details>
+
+
+
+
 
 ###### EOF
