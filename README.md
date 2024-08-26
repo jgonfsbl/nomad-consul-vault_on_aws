@@ -89,10 +89,19 @@ By the initialization of the first EC2 instance, that will operate as server, th
   3. Genearte certificates for all server instances using the internal CA (there are alternative methods using Vault described in the tech articles titled [Administer Consul access control tokens with Vault](https://developer.hashicorp.com/consul/tutorials/operate-consul/vault-consul-secrets), [Automatically Rotate Gossip Encryption Keys Secured in Vault](https://developer.hashicorp.com/consul/tutorials/operate-consul/vault-kv-consul-secure-gossip?productSlug=consul&tutorialSlug=vault-secure&tutorialSlug=vault-kv-consul-secure-gossip) and [Generate mTLS Certificates for Consul with Vault](https://developer.hashicorp.com/consul/tutorials/operate-consul/vault-pki-consul-secure-tls):  
      `consul tls cert create -server -dc dc1`  
        Repeat this command 3/5/7 times to generate 1 pair of certs per server instance. 
-  4. Enable and start services:  
+  4. In the `/etc/consul.d/consul.hcl` config file it's necessary to make some temporal adjustments to allow Consul to operate with only 1 node:
+     - Change from `bootstrap_expect = 3` to `bootstrap_expect = 1`
+     - Comment out block `retry_join`
+     - Comment out `tls`
+     - Comment out `auto_encrypt`
+     - Change `acl` stanza:
+       - Change from `default_policy = "deny"` to `default_policy = "allow"`
+       - Comment out the `tokens` block
+  5. Continue with configuration bits described in folder [Consul](consul/readme.md).
+  6. Now that initial config has been completed in Consul, revert back the configuration options changed before and add more nodes to the Consul cluster. 
+  7. Finally, enable and start services:  
        `systemctl enable consul`  
        `systemctl start consul`
-  5. Finally, continue with configuration bits describecd in folder [Consul](consul/readme.md).
 </details>
 
 
