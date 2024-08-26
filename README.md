@@ -86,7 +86,7 @@ By the initialization of the first EC2 instance, that will operate as server, th
      `chmod consul:consul /etc/consul.d`  
   2. Initialize Consul's internal CA:  
        `consul tls ca create`
-  3. Genearte certificates for all server instances using the internal CA (there are alternative methods using Vault described in the article titled [Generate mTLS Certificates for Consul with Vault](https://developer.hashicorp.com/consul/tutorials/operate-consul/vault-pki-consul-secure-tls):  
+  3. Genearte certificates for all server instances using the internal CA (there are alternative methods using Vault described in the tech articles titled [Administer Consul access control tokens with Vault](https://developer.hashicorp.com/consul/tutorials/operate-consul/vault-consul-secrets) and [Generate mTLS Certificates for Consul with Vault](https://developer.hashicorp.com/consul/tutorials/operate-consul/vault-pki-consul-secure-tls):  
      `consul tls cert create -server -dc dc1`  
        Repeat this command 3/5/7 times to generate 1 pair of certs per server instance. 
   4. Enable and start services:  
