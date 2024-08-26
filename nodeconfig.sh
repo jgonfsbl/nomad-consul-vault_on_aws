@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Debug mode
-set -x
+set +x
 
 #
 # This script decides which implementation of Nomad, Consul and Vault is
@@ -22,8 +22,11 @@ set -x
 #
 #   SERVER_SUBNETS="subnet-xxxxxxx subnet-yyyyyyy subnet-zzzzzzz"
 #   TPL_KEYGEN="kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
-#   TPL_CONSUL_TOKEN_CONSULNOMAD_AGENTWORKER="a8cd99ec-nnnn-nnnn-nnnn-nnnnnnnnnnnn"
-#   TPL_CONSUL_TOKEN_CONSULNOMAD_SERVER="2773eee6-nnnn-nnnn-nnnn-nnnnnnnnnnnn"
+#   TPL_CONSUL_TOKEN_CONSULNOMAD_AGENTWORKER=a8cd99ec-nnnn-nnnn-nnnn-nnnnnnnnnnnn
+#   TPL_CONSUL_TOKEN_CONSULNOMAD_SERVER=2773eee6-nnnn-nnnn-nnnn-nnnnnnnnnnnn
+#
+# Please note, first two lines make use of double quotes, whereas the two
+# second lines don't on purpose.
 #
 
 # Load .env file if it exists
@@ -138,8 +141,8 @@ fi
 
 
 # Register services
-# systemctl enable consul.service
-# systemctl enable nomad.service
+systemctl enable consul
+systemctl enable nomad
 
 echo ""
 echo "SERVICES READY TO LAUNCH FOR THE FIRST TIME; POTENTIAL INITIALIZATION BY HAND."
