@@ -1,3 +1,8 @@
+#############################################################################
+#
+# General
+#
+
 name = "ncv-wrk-1"
 region = "global"
 datacenter = "dc1"
@@ -7,21 +12,22 @@ data_dir = "/opt/nomad/data"
 log_level = "INFO"
 enable_syslog = true
 
-bind_addr = "10.0.182.148"
+bind_addr = "10.0.180.126"
 
 advertise {
-  http = "10.0.182.148"
-  rpc  = "10.0.182.148"
-  serf = "10.0.182.148"
+  http = "10.0.180.126"
+  rpc  = "10.0.180.126"
+  serf = "10.0.180.126"
 }
 
+#############################################################################
+#
 # Consul integration for service discovery and health checks
+#
+
 consul {
   address = "127.0.0.1:8500"
-  # Policy: nomad-client / Token: Nomad Client Token
-  token = "a8cd99ec-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-
-  # Register the Nomad client as a service in Consul
+  token = "1e0edd55-4534-d582-7daa-541bc758b050"
   server_service_name = "nomad-servers"
   client_service_name = "nomad-clients"
   auto_advertise = true
@@ -29,7 +35,20 @@ consul {
   allow_unauthenticated = true
 }
 
+#############################################################################
+#
+# Disable server mode
+#
+
+server {
+  enabled = false
+}
+
+#############################################################################
+#
 # Client settings: Nomad worker configuration
+#
+
 client {
   enabled = true
 
@@ -43,20 +62,30 @@ client {
   # }
 }
 
-# Disable server mode
-server {
-  enabled = false
-}
-
+#############################################################################
+#
 # Optional: Vault integration for secret management
+#
 # vault {
 #   enabled = true
 #   address = "http://127.0.0.1:8200"
 #   token = "vault-root-token"
 # }
 
+#############################################################################
+#
 # Optional: Plugin directory for custom plugins
+#
+
 plugin_dir = "/opt/efs/nomad-plugins"
+
+plugin "docker" {
+  config {
+    volumes {
+      enabled = true
+    }
+  }
+}
 
 plugin "raw_exec" {
   config {
