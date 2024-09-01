@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Debug mode
-set +x
+# Debug mode active; change to +x to disable.
+set -x
 
 #
 # This script decides which implementation of Nomad, Consul and Vault is
@@ -90,7 +90,14 @@ done
 
 # Prepare DNSMasq
 rm -f /etc/dnsmasq.conf
+systemctl disable systemd-resolved.service
+systemctl stop systemd-resolved.service
+rm -f /etc/resolv.conf
+echo "nameserver 127.0.0.1" >> /etc/resolv.conf
+echo "search $REGION.compute.internal consul" >> /etc/resolv.conf
 cp "$EFS_MOUNT_POINT/dnsmasq/dnsmasq.conf" "/etc/dnsmasq.conf"
+systemctl enable dnsmasq
+systemctl start dnsmasq
 
 
 # Prepare the local directories for Nomad, Consul and Vault
