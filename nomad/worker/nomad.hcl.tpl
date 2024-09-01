@@ -1,3 +1,8 @@
+#############################################################################
+#
+# General
+#
+
 name = "TPL_NAME"
 region = "global"
 datacenter = "dc1"
@@ -15,7 +20,11 @@ advertise {
   serf = "TPL_IP"
 }
 
+#############################################################################
+#
 # Consul integration for service discovery and health checks
+#
+
 consul {
   address = "127.0.0.1:8500"
   token = "TPL_CONSUL_TOKEN_CONSULNOMAD-AGENTWORKER"
@@ -26,7 +35,20 @@ consul {
   allow_unauthenticated = true
 }
 
+#############################################################################
+#
+# Disable server mode
+#
+
+server {
+  enabled = false
+}
+
+#############################################################################
+#
 # Client settings: Nomad worker configuration
+#
+
 client {
   enabled = true
 
@@ -40,20 +62,30 @@ client {
   # }
 }
 
-# Disable server mode
-server {
-  enabled = false
-}
-
+#############################################################################
+#
 # Optional: Vault integration for secret management
+#
 # vault {
 #   enabled = true
 #   address = "http://127.0.0.1:8200"
 #   token = "vault-root-token"
 # }
 
+#############################################################################
+#
 # Optional: Plugin directory for custom plugins
+#
+
 plugin_dir = "/opt/efs/nomad-plugins"
+
+plugin "docker" {
+  config {
+    volumes {
+      enabled = true
+    }
+  }
+}
 
 plugin "raw_exec" {
   config {
