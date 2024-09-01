@@ -68,7 +68,7 @@ After the EC2 Launch the user-data script will complete the job for consul agent
 ### DNSMasq setup process
 Here are the steps to follow:  
   
-  1. Copy the file from EFS share to the right place, in `/etc/dnsmasq.conf`
+  1. Copy the DNSMasq configuration file from EFS share to the right place, in `/etc/dnsmasq.conf`
   2. Disable Ubuntu´s SystemD Resolver
      `systemctl disable systemd-resolved.service`
      `systemctl stop systemd-resolved.service`
